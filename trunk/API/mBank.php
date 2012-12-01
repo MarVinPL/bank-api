@@ -1,6 +1,6 @@
 <?php
 /**
- * API mBank v0.4.0
+ * API mBank v0.5.0
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
  * @copyright Copyright (c) 2010-2010, Jakub Konefał
@@ -160,7 +160,7 @@ class API_mBank extends API_Bank
      */
     private function _explodeAccountDetails($account_details)
     {
-        preg_match("#(.*) - ([0-9 ]+)#", $account_details, $match);
+        preg_match("#(.*) ([0-9]{2,2}[ ]{1,1}[0-9]{4,4}[ ]{1,1}[0-9]{4,4}[ ]{1,1}[0-9]{4,4}[ ]{1,1}[0-9]{4,4}[ ]{1,1}[0-9]{4,4}[ ]{1,1}[0-9]{4,4})#", $account_details, $match);
         if (count($match) != 3) {
             return array('title' => '', 'number' => '');
         }
@@ -237,7 +237,9 @@ class API_mBank extends API_Bank
         $_arr = array();
         if (IsSet($matches[1]) && count($matches[1]) > 0) {
             foreach ($matches[1] as $k => $v) {
-                if (preg_match("#" . $epa . $epa . $eps . "<p[^>]+>" . $ea . $ea . $ea . $ea . "</p>#i", $v, $match)) {
+                if (preg_match("#" . $epa . $epa . $eps . "<p[^>]+>" . $ea . $ea . $ea . $ea . $ea . "</p>#i", $v, $match)) {
+                    $this->accountList[] = $this->_parseAccountListMatch($match, true);
+                } else if (preg_match("#" . $epa . $epa . $eps . "<p[^>]+>" . $ea . $ea . $ea . $ea . "</p>#i", $v, $match)) {
                     $this->accountList[] = $this->_parseAccountListMatch($match, true);
                 } else if (preg_match("#" . $epa . $epa . $eps . "<p[^>]+>" . $ea . $ea . $ea . "</p>#i", $v, $match)) {
                     $this->accountList[] = $this->_parseAccountListMatch($match, false);
