@@ -1,6 +1,6 @@
 <?php
 /**
- * API mBank v0.4.0
+ * API mBank v0.5.0
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
  * @copyright Copyright (c) 2010-2010, Jakub Konefał
