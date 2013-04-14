@@ -1,6 +1,6 @@
 <?php
 /**
- * API mBank v0.5.0
+ * API mBank v0.5.1
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
  * @copyright Copyright (c) 2010-2010, Jakub Konefał
@@ -301,6 +301,18 @@ class API_mBank extends API_Bank
     }
 
     /**
+     * Parsowanie listy operacji (informacje o identyfikatorze)
+     *
+     * @param $match
+     * @return array
+     */
+    private function _parseListOperTransferId($match)
+    {
+        preg_match("#id=\"\w+_([0-9]+)\"#iU", $match, $m);
+        return isset($m[1]) ? $m[1] : null;
+    }
+
+    /**
      * Parsowanie listy operacji (informacje o transferze)
      *
      * @param $match
@@ -350,8 +362,9 @@ class API_mBank extends API_Bank
                 'accounting' => $match[$i++]
             ),
             'account_oper_details' => array(
+                'tid' => $this->_parseListOperTransferId($match[$i++]),
                 'url' => $match[$i++],
-                'parameters' => $match[$i++]
+                'parameters' => $match[$i++],
             ),
             'transfer' => array(
                 'type' => $match[$i++],
@@ -399,7 +412,7 @@ class API_mBank extends API_Bank
         $_arr = array();
         if (IsSet($matches[1]) && count($matches[1]) > 0) {
             foreach ($matches[1] as $k => $v) {
-                if (preg_match("#<p[^>]+>" . $es . $es . "</p><p[^>]+>.*</p><p[^>]+>" . $ea . "(.+)</p>" . $eps . $eps . "#i", $v, $match)) {
+                if (preg_match("#<p[^>]+>" . $es . $es . "</p><p[^>]+>(.*)</p><p[^>]+>" . $ea . "(.+)</p>" . $eps . $eps . "#i", $v, $match)) {
                     $this->accountListOper[] = $this->_parseAccountListOperMatch($match);
                 }
             }
@@ -520,10 +533,11 @@ EOF
                 'title' => base64_encode($v['transfer']['info']['title']),
                 'contact' => base64_encode($v['transfer']['info']['contact']),
                 'amount' => base64_encode($v['resources']['operation_amount']['amount']),
-                'currency' => base64_encode($v['resources']['operation_amount']['currency'])
+                'currency' => base64_encode($v['resources']['operation_amount']['currency']),
+                'tid' => base64_encode($v['account_oper_details']['tid'])
             ));
             if ($display) {
-                echo "<b>Title: {$v['transfer']['info']['title']}</b> ({$v['transfer']['type']})<br>";
+                echo "<b>Title: {$v['transfer']['info']['title']}</b> ({$v['transfer']['type']}) [TID: {$v['account_oper_details']['tid']}]<br>";
                 echo "&nbsp; Date: {$v['date']['operation']} ({$v['date']['accounting']})<br>";
                 echo "&nbsp; Amount: {$v['resources']['operation_amount']['amount']} {$v['resources']['operation_amount']['currency']}<br><br>";
             }
