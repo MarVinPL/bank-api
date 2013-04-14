@@ -1,4 +1,4 @@
--- API mBank v0.5.1 --
+-- mBank API v0.5.1 --
 Program jest cały czas w fazie rozwoju, dlatego wszelkie uwagi i propozycje są mile widziane.
 Klasy i metody są nieco chaotycznie napisane.
 Skrypt był pisany 'na szybko' - miał działać, nie miał być piękny i przejrzysty.

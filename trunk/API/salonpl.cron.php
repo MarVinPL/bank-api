@@ -1,11 +1,12 @@
 <?php
 /**
- * API mBank v0.3.1
+ * Salon.pl API v0.2.0
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
- * @copyright Copyright (c) 2010-2010, Jakub Konefał
+ * @copyright Copyright (c) 2010-2013, Jakub Konefał
  * @link http://api.studio85.pl/
  */
+
 define('IN_API', TRUE);
 
 //define('PATH', dirname($_SERVER['SCRIPT_FILENAME']).'/');

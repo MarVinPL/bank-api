@@ -1,11 +1,12 @@
 <?php
 /**
- * API Bank v0.4
+ * Bank API v0.1.0
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
- * @copyright Copyright (c) 2010-2010, Jakub Konefał
+ * @copyright Copyright (c) 2010-2013, Jakub Konefał
  * @link http://api.studio85.pl/
  */
+
 if (!defined('IN_API')) exit("Hacking attempt");
 if (!defined('APP_PATH')) exit("Where's that script?!");
 

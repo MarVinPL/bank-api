@@ -1,11 +1,12 @@
 <?php
 /**
- * API mBank v0.5.1
+ * mBank API v0.5.1
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
- * @copyright Copyright (c) 2010-2010, Jakub Konefał
+ * @copyright Copyright (c) 2010-2013, Jakub Konefał
  * @link http://api.studio85.pl/
  */
+
 if (!defined('IN_API')) exit("Hacking attempt");
 if (!defined('APP_PATH')) exit("Where's that script?!");
 

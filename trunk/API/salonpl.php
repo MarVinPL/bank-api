@@ -1,4 +1,11 @@
 <?php
+/**
+ * Salon.pl API v0.2.0
+ *
+ * @author Jakub Konefał <jakub.konefal@studio85.pl>
+ * @copyright Copyright (c) 2010-2013, Jakub Konefał
+ * @link http://api.studio85.pl/
+ */
 
 define('IN_API', TRUE);
 define('PATH', '/home/studio85/ftp/domains/studio85.pl/api/');
