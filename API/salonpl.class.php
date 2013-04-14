@@ -1,4 +1,12 @@
 <?php
+/**
+ * Salon.pl API v0.2.0
+ *
+ * @author Jakub Konefał <jakub.konefal@studio85.pl>
+ * @copyright Copyright (c) 2010-2013, Jakub Konefał
+ * @link http://api.studio85.pl/
+ */
+
 if (!defined('IN_API')) exit("Hacking attempt");
 if (!defined('PATH')) exit("Where's that script?!");
 require_once(PATH . "mainapi.class.php");

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Fora.pl API v0.3.0
+ *
+ * @author Jakub Konefał <jakub.konefal@studio85.pl>
+ * @copyright Copyright (c) 2010-2013, Jakub Konefał
+ * @link http://api.studio85.pl/
+ */
+
 define('IN_API', TRUE);
 define('PATH', dirname($_SERVER['SCRIPT_FILENAME']).'/');
 set_time_limit(0);
