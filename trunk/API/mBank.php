@@ -1,6 +1,6 @@
 <?php
 /**
- * mBank API v0.5.1
+ * mBank API v0.5.2
  *
  * @author Jakub Konefał <jakub.konefal@studio85.pl>
  * @copyright Copyright (c) 2010-2013, Jakub Konefał
@@ -438,6 +438,7 @@ EOF
         $this->readConfigFile();
         $this->setConnectionInfo('ssl://', 'www.mbank.com.pl', 443, 'https://www.mbank.com.pl');
         $this->connectToHost();
+        $this->sendToHost('/', '/');
         $this->sendToHost('/', '/');
         $this->verifyContent();
         $this->_parseMainFormInputs();
